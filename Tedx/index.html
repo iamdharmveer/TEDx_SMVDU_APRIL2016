@@ -16,7 +16,9 @@
    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
    <script type="text/javascript" src="js/modernizr.custom.js"></script>
    <link rel="shortcut icon" href="favicon.png">
+   <link type="text/css" rel="stylesheet" href="css/flipclock.css" />
   </head>
+  <style text="text/css">body .flip-clock-wrapper ul li a div div.inn, body .flip-clock-small-wrapper ul li a div div.inn { color: black; background-color:white ; } body .flip-clock-dot, body .flip-clock-small-wrapper .flip-clock-dot { background:white; box-shadow: 2px solid black;} body .flip-clock-wrapper .flip-clock-meridium a, body .flip-clock-small-wrapper .flip-clock-meridium a { color: ; }</style>
   <style>
   a.morelink {
 	text-decoration:none;
@@ -57,11 +59,11 @@
 				<h2><span class="fa fa-map-marker"></span> MATRIKA AUDITORIUM</h2>
 				<h2>23rd April, 2016</h2>
             </div>
-			
             <a href="#about" class="down-btn page-scroll">
                 <span class="fa fa-angle-down"></span>
             </a>
         </div>
+		<div class="clock-builder-output" ></div>
     </div>
     <div class="space"></div>
     <div id="about">
@@ -357,7 +359,20 @@ Before Townscript, Sanchit had co-founded a travel startup named Padhaaro. </p>
 	});
 });
 	</script>
-	
+<script type="text/javascript" src="js/flipclock.js"></script>
+<script type="text/javascript">
+$(function(){
+	FlipClock.Lang.Custom = { days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds' };
+	var opts = {
+		clockFace: 'HourCounter',
+		countdown: true,
+		language: 'Custom'
+	};  
+	var countdown = 1461419700 - ((new Date().getTime())/1000); // from: 04/23/2016 07:25 pm +0530
+	countdown = Math.max(1, countdown);
+	$('.clock-builder-output').FlipClock(countdown, opts);
+});
+</script>
     <script type="text/javascript" src="js/main.js"></script>
 
   </body>
